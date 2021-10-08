@@ -3,3 +3,10 @@
 渡辺哲,男,1950/3/11,愛知県,Java
 窪塚洋介,男,1979/5/7,神奈川県,HTMLCSS
 吉高由里子,女,1988/7/22,東京都,Java
+
+
+HTMLCSS
+JavaScript
+PHP
+Java
+サーブレットJSP
