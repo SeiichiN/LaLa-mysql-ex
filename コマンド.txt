@@ -9,8 +9,10 @@ MariaDB> grant all on <データベース名>.*
 MariaDB> exit (rootユーザーの仕事はここまで)
 
 sampleuserユーザーでログインする(パスワード:sampleuser)
-> mysql -u sampleuser -p
-Password: sampleuser
+> mysql -u st_user -p
+Password: stxxx
+
+MariaDB> tee > student.log
 
 MariaDB> create database sample;
 
@@ -58,6 +60,29 @@ MariaDB> show variables like '%char%';
 MariaDB> \. sample.sql
 あるいは
 MariaDB> source sample.sql
+
+
+バックアップ(MySQLの外)
+> mysqldump -u <ユーザー名> -p --databases [データベース名] > [お好きなファイル名]
+
+ユーザー名: st_user
+データベース名: student
+ファイル名: student.dump
+
+> mysqldump -u st_user -p --databases student > student.dump
+
+リストア（復元）(MySQLの外)
+> mysql -u [ユーザー名] -p < [ダンプファイル]
+
+> mysql -u st_user -p < student.dump
+
+
+/****** 結合 ************/
+
+MariaDB> SELECT * FROM <メイン表> [INNER] JOIN <サブ表>
+    -> ON <メイン表.キーカラム名> = <サブ表.キーカラム名>
+ 
+
 
 
 
