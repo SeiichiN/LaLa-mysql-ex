@@ -12,7 +12,7 @@ sampleuserユーザーでログインする(パスワード:sampleuser)
 > mysql -u st_user -p
 Password: stxxx
 
-MariaDB> tee > student.log
+MariaDB> tee student.log
 
 MariaDB> create database sample;
 
