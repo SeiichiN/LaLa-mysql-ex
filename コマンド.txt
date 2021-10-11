@@ -2,13 +2,13 @@
 > mysql -u root -p
 Password:
 
-MariaDB> grant all on <ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹å>.*
- -> to '<ãƒ¦ãƒ¼ã‚¶ãƒ¼å>'@'localhost'
- -> identified by '<ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰>';
+MariaDB> grant all on <ƒf[ƒ^ƒx[ƒX–¼>.*
+ -> to '<ƒ†[ƒU[–¼>'@'localhost'
+ -> identified by '<ƒpƒXƒ[ƒh>';
  
-MariaDB> exit (rootãƒ¦ãƒ¼ã‚¶ãƒ¼ã®ä»•äº‹ã¯ã“ã“ã¾ã§)
+MariaDB> exit (rootƒ†[ƒU[‚Ìd–‚Í‚±‚±‚Ü‚Å)
 
-sampleuserãƒ¦ãƒ¼ã‚¶ãƒ¼ã§ãƒ­ã‚°ã‚¤ãƒ³ã™ã‚‹(ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰:sampleuser)
+sampleuserƒ†[ƒU[‚ÅƒƒOƒCƒ“‚·‚é(ƒpƒXƒ[ƒh:sampleuser)
 > mysql -u st_user -p
 Password: stxxx
 
@@ -36,55 +36,55 @@ desc emp;
 
 show create table dept;
 
-insert into emp (name, age, birthday, dept_id) values ('è…åŸæ–‡å¤ª', 40, 1933, '001');
+insert into emp (name, age, birthday, dept_id) values ('›Œ´•¶‘¾', 40, 1933, '001');
 
 insert into emp (name, age, birthday, dept_id) values
-('åƒè‘‰çœŸä¸€', 34, 1939, '002'),
-('åŒ—å¤§è·¯æ¬£ä¹Ÿ', 30, 1943, '003'),
-('æ¢¶èŠ½è¡£å­', 26, 1947, '002');
+('ç—t^ˆê', 34, 1939, '002'),
+('–k‘å˜H‹Ó–ç', 30, 1943, '003'),
+('Š‰èˆßq', 26, 1947, '002');
 
 select * from emp;
 
 insert into dept (id, name) values
-('001', 'ç·å‹™éƒ¨'),
-('002', 'å–¶æ¥­éƒ¨'),
-('003', 'çµŒç†éƒ¨'),
-('004', 'é–‹ç™ºéƒ¨');
+('001', '‘–±•”'),
+('002', '‰c‹Æ•”'),
+('003', 'Œo—•”'),
+('004', 'ŠJ”­•”');
 
 
-mysqlã®æ–‡å­—ã‚³ãƒ¼ãƒ‰ã®ç¢ºèª
+mysql‚Ì•¶šƒR[ƒh‚ÌŠm”F
 MariaDB> show variables like '%char%';
 
 
-ã‚¹ã‚¯ãƒªãƒ—ãƒˆãƒ•ã‚¡ã‚¤ãƒ«ã‚’èª­ã¿è¾¼ã‚€
+ƒXƒNƒŠƒvƒgƒtƒ@ƒCƒ‹‚ğ“Ç‚İ‚Ş
 MariaDB> \. sample.sql
-ã‚ã‚‹ã„ã¯
+‚ ‚é‚¢‚Í
 MariaDB> source sample.sql
 
 
-ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—(MySQLã®å¤–)
-> mysqldump -u <ãƒ¦ãƒ¼ã‚¶ãƒ¼å> -p --databases [ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹å] > [ãŠå¥½ããªãƒ•ã‚¡ã‚¤ãƒ«å]
+ƒoƒbƒNƒAƒbƒv(MySQL‚ÌŠO)
+> mysqldump -u <ƒ†[ƒU[–¼> -p --databases [ƒf[ƒ^ƒx[ƒX–¼] > [‚¨D‚«‚Èƒtƒ@ƒCƒ‹–¼]
 
-ãƒ¦ãƒ¼ã‚¶ãƒ¼å: st_user
-ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹å: student
-ãƒ•ã‚¡ã‚¤ãƒ«å: student.dump
+ƒ†[ƒU[–¼: st_user
+ƒf[ƒ^ƒx[ƒX–¼: student
+ƒtƒ@ƒCƒ‹–¼: student.dump
 
 > mysqldump -u st_user -p --databases student > student.dump
 
-ãƒªã‚¹ãƒˆã‚¢ï¼ˆå¾©å…ƒï¼‰(MySQLã®å¤–)
-> mysql -u [ãƒ¦ãƒ¼ã‚¶ãƒ¼å] -p < [ãƒ€ãƒ³ãƒ—ãƒ•ã‚¡ã‚¤ãƒ«]
+ƒŠƒXƒgƒAi•œŒ³j(MySQL‚ÌŠO)
+> mysql -u [ƒ†[ƒU[–¼] -p < [ƒ_ƒ“ƒvƒtƒ@ƒCƒ‹]
 
 > mysql -u st_user -p < student.dump
 
 
-/****** çµåˆ ************/
+/****** Œ‹‡ ************/
 
-MariaDB> SELECT * FROM <ãƒ¡ã‚¤ãƒ³è¡¨> [INNER] JOIN <ã‚µãƒ–è¡¨>
-    -> ON <ãƒ¡ã‚¤ãƒ³è¡¨.ã‚­ãƒ¼ã‚«ãƒ©ãƒ å> = <ã‚µãƒ–è¡¨.ã‚­ãƒ¼ã‚«ãƒ©ãƒ å>
+MariaDB> SELECT * FROM <ƒƒCƒ“•\> [INNER] JOIN <ƒTƒu•\>
+    -> ON <ƒƒCƒ“•\.ƒL[ƒJƒ‰ƒ€–¼> = <ƒTƒu•\.ƒL[ƒJƒ‰ƒ€–¼>
  
 
 
 
 
 
-;; ä¿®æ­£æ™‚åˆ»: Fri Oct  8 09:37:16 2021
+;; C³: Mon Oct 11 09:47:24 2021
