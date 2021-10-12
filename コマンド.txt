@@ -1,3 +1,4 @@
+memo
 
 > mysql -u root -p
 Password:
@@ -116,6 +117,13 @@ SELECT * FROM emp;
 -- データの表示(カラム指定)
 SELECT name, age, birthday FROM emp;
 
+/*******************************/
+-- ユーザー一覧
+-- rootユーザーで実行
+SELECT user, host, db FROM mysql.db;
+
+-- パスワードの再設定
+SET PASSWORD FOR 'ユーザー名'@'localhost' = password('パスワード');
 
 
 
