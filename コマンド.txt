@@ -83,6 +83,45 @@ MariaDB> SELECT * FROM <メイン表> [INNER] JOIN <サブ表>
     -> ON <メイン表.キーカラム名> = <サブ表.キーカラム名>
  
 
+/****** 外部キーをあとから設定する ******/
+ALTER TABLE emp               -- テーブル再定義
+  ADD                         -- 追加
+    CONSTRAINT fk_dept        -- 制約名 fk_dept
+    FOREIGN KEY (dept_id)     -- 外部キー dept_id
+    REFERENCES dept(id);      -- 参照  dept表の(id)
+
+-- 表定義の変更
+ALTER TABLE emp
+  MODIFY name varchar(20) NOT NULL;  -- NOT NULL を追加
+
+-- 登録データの修正
+UPDATE emp SET name = '菅原文夫' WHERE id = 1;
+
+-- データの削除(1件)
+DELETE FROM emp WHERE id = 1;
+
+-- データの削除(全件)
+DELETE FROM emp;
+
+-- データの登録(全カラム登録)
+INSERT INTO emp VALUES (5, '山城新伍', 35, 1938, '005');
+
+-- データの登録(カラム指定)
+INSERT INTO emp (name, age, birthday, dept_id) VALUES
+('成田三樹夫', 42, 1931, '004');
+
+-- データの表示(全カラム)
+SELECT * FROM emp;
+
+-- データの表示(カラム指定)
+SELECT name, age, birthday FROM emp;
+
+
+
+
+
+
+
 
 
 
