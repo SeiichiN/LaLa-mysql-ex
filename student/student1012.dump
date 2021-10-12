@@ -1,0 +1,178 @@
+-- MariaDB dump 10.19  Distrib 10.4.20-MariaDB, for Win64 (AMD64)
+--
+-- Host: localhost    Database: student
+-- ------------------------------------------------------
+-- Server version	10.4.20-MariaDB
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Current Database: `student`
+--
+
+CREATE DATABASE /*!32312 IF NOT EXISTS*/ `student` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
+
+USE `student`;
+
+--
+-- Table structure for table `course`
+--
+
+DROP TABLE IF EXISTS `course`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `course` (
+  `c_id` int(11) NOT NULL AUTO_INCREMENT,
+  `c_name` varchar(20) NOT NULL,
+  PRIMARY KEY (`c_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `course`
+--
+
+LOCK TABLES `course` WRITE;
+/*!40000 ALTER TABLE `course` DISABLE KEYS */;
+INSERT INTO `course` VALUES (1,'HTMLCSS'),(2,'JavaScript'),(3,'PHP'),(4,'Java'),(5,'サーブレットJSP');
+/*!40000 ALTER TABLE `course` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `gender`
+--
+
+DROP TABLE IF EXISTS `gender`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `gender` (
+  `gid` char(1) NOT NULL,
+  `gname` char(1) NOT NULL,
+  PRIMARY KEY (`gid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `gender`
+--
+
+LOCK TABLES `gender` WRITE;
+/*!40000 ALTER TABLE `gender` DISABLE KEYS */;
+INSERT INTO `gender` VALUES ('0','－'),('1','男'),('2','女'),('3','他');
+/*!40000 ALTER TABLE `gender` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `person`
+--
+
+DROP TABLE IF EXISTS `person`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `person` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(20) NOT NULL,
+  `gender` char(1) NOT NULL,
+  `birthday` date NOT NULL,
+  `state` varchar(20) NOT NULL,
+  `c_code` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `person`
+--
+
+LOCK TABLES `person` WRITE;
+/*!40000 ALTER TABLE `person` DISABLE KEYS */;
+INSERT INTO `person` VALUES (1,'染谷将太','1','1992-09-03','東京都',2),(2,'二階堂ふみ','2','1994-09-21','沖縄県',3),(3,'渡辺哲','1','1950-03-11','愛知県',4),(4,'窪塚洋介','1','1979-05-07','神奈川県',1),(5,'吉高由里子','2','1988-07-22','東京都',4);
+/*!40000 ALTER TABLE `person` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `state`
+--
+
+DROP TABLE IF EXISTS `state`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `state` (
+  `code` char(2) NOT NULL,
+  `name` varchar(10) NOT NULL,
+  PRIMARY KEY (`code`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `state`
+--
+
+LOCK TABLES `state` WRITE;
+/*!40000 ALTER TABLE `state` DISABLE KEYS */;
+INSERT INTO `state` VALUES ('01','北海道'),('02','青森県'),('03','岩手県'),('04','宮城県'),('05','秋田県'),('06','山形県'),('07','福島県'),('08','茨城県'),('09','栃木県'),('10','群馬県'),('11','埼玉県'),('12','千葉県'),('13','東京都'),('14','神奈川県'),('15','新潟県'),('16','富山県'),('17','石川県'),('18','福井県'),('19','山梨県'),('20','長野県'),('21','岐阜県'),('22','静岡県'),('23','愛知県'),('24','三重県'),('25','滋賀県'),('26','京都府'),('27','大阪府'),('28','兵庫県'),('29','奈良県'),('30','和歌山県'),('31','鳥取県'),('32','島根県'),('33','岡山県'),('34','広島県'),('35','山口県'),('36','徳島県'),('37','香川県'),('38','愛媛県'),('39','高知県'),('40','福岡県'),('41','佐賀県'),('42','長崎県'),('43','熊本県'),('44','大分県'),('45','宮崎県'),('46','鹿児島県'),('47','沖縄県');
+/*!40000 ALTER TABLE `state` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Temporary table structure for view `student_view`
+--
+
+DROP TABLE IF EXISTS `student_view`;
+/*!50001 DROP VIEW IF EXISTS `student_view`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE TABLE `student_view` (
+  `ID` tinyint NOT NULL,
+  `名前` tinyint NOT NULL,
+  `性別` tinyint NOT NULL,
+  `誕生日` tinyint NOT NULL,
+  `出身` tinyint NOT NULL,
+  `コース` tinyint NOT NULL
+) ENGINE=MyISAM */;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Current Database: `student`
+--
+
+USE `student`;
+
+--
+-- Final view structure for view `student_view`
+--
+
+/*!50001 DROP TABLE IF EXISTS `student_view`*/;
+/*!50001 DROP VIEW IF EXISTS `student_view`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = cp932 */;
+/*!50001 SET character_set_results     = cp932 */;
+/*!50001 SET collation_connection      = cp932_japanese_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`st_user`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `student_view` AS select `p`.`id` AS `ID`,`p`.`name` AS `���O`,`g`.`gname` AS `����`,`p`.`birthday` AS `�a����`,`p`.`state` AS `�o�g`,`c`.`c_name` AS `�R�[�X` from ((`person` `p` join `gender` `g` on(`p`.`gender` = `g`.`gid`)) join `course` `c` on(`p`.`c_code` = `c`.`c_id`)) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2021-10-12  9:28:14

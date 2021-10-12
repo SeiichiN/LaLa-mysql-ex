@@ -1,3 +1,17 @@
+-- stateテーブルを作成するsqlスクリプト
+-- user: st_user
+-- pass: stxxx
+
+CREATE DATABASE IF NOT EXISTS student;
+USE student;
+
+DROP TABLE IF EXISTS state;
+
+CREATE TABLE state (
+  code char(2) PRIMARY KEY,
+  name varchar(10) NOT NULL
+);
+
 INSERT INTO state values
 ('01', '北海道'),
 ('02', '青森県'),
