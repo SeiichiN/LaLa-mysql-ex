@@ -64,13 +64,13 @@ MariaDB> source sample.sql
 
 
 バックアップ(MySQLの外)
-> mysqldump -u <ユーザー名> -p --databases [データベース名] > [お好きなファイル名]
+> mysqldump -u <ユーザー名> -p -B [データベース名] > [お好きなファイル名]
 
 ユーザー名: st_user
 データベース名: student
 ファイル名: student.dump
 
-> mysqldump -u st_user -p --databases student > student.dump
+> mysqldump -u st_user -p -B student > student.dump
 
 リストア（復元）(MySQLの外)
 > mysql -u [ユーザー名] -p < [ダンプファイル]
