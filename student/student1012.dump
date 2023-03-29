@@ -67,7 +67,7 @@ CREATE TABLE `gender` (
 
 LOCK TABLES `gender` WRITE;
 /*!40000 ALTER TABLE `gender` DISABLE KEYS */;
-INSERT INTO `gender` VALUES ('0','Ôºç'),('1','Áî∑'),('2','Â•≥'),('3','‰ªñ');
+INSERT INTO `gender` VALUES ('0','‚àí'),('1','Áî∑'),('2','Â•≥'),('3','‰ªñ');
 /*!40000 ALTER TABLE `gender` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -161,7 +161,7 @@ USE `student`;
 /*!50001 SET collation_connection      = cp932_japanese_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`st_user`@`localhost` SQL SECURITY DEFINER */
-/*!50001 VIEW `student_view` AS select `p`.`id` AS `ID`,`p`.`name` AS `ñºëO`,`g`.`gname` AS `ê´ï `,`p`.`birthday` AS `íaê∂ì˙`,`p`.`state` AS `èoêg`,`c`.`c_name` AS `ÉRÅ[ÉX` from ((`person` `p` join `gender` `g` on(`p`.`gender` = `g`.`gid`)) join `course` `c` on(`p`.`c_code` = `c`.`c_id`)) */;
+/*!50001 VIEW `student_view` AS select `p`.`id` AS `ID`,`p`.`name` AS `ÂêçÂâç`,`g`.`gname` AS `ÊÄßÂà•`,`p`.`birthday` AS `Ë™ïÁîüÊó•`,`p`.`state` AS `Âá∫Ë∫´`,`c`.`c_name` AS `„Ç≥„Éº„Çπ` from ((`person` `p` join `gender` `g` on(`p`.`gender` = `g`.`gid`)) join `course` `c` on(`p`.`c_code` = `c`.`c_id`)) */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;

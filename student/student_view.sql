@@ -1,15 +1,15 @@
 CREATE VIEW student_view AS
 SELECT
     p.id       AS ID,
-    p.name     AS 名前,
-    g.gname    AS 性別,
-    p.birthday AS 誕生日,
-    s.name     AS 出身,
-    c.c_name   AS コース
+    p.name     AS 蜷榊燕,
+    g.name    AS 諤ｧ蛻･,
+    p.birthday AS 隱慕函譌･,
+    s.name     AS 蜃ｺ霄ｫ,
+    c.name   AS 繧ｳ繝ｼ繧ｹ
   FROM person p
   INNER JOIN gender g
-    ON p.gender = g.gid
+    ON p.gender = g.id
   INNER JOIN course c
-    ON p.c_code = c.c_id
+    ON p.c_id = c.id
   INNER JOIN state s
-    ON p.state = s.code;
+    ON p.s_code = s.code;
