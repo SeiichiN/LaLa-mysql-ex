@@ -1,0 +1,132 @@
+-- データベース名 student
+-- ユーザー: st_user
+-- パスワード: 1234
+
+CREATE USER IF NOT EXISTS 'st_user'@'localhost'
+  IDENTIFIED BY '1234';
+
+GRANT ALL ON student.*
+  TO 'st_user'@'localhost';
+
+
+-- 
+-- データベース作成・使用
+--
+CREATE DATABASE IF NOT EXISTS student;
+USE student;
+
+--
+-- 都道府県テーブルを読み込む
+--   id   char(2)    PRIMARY KEY
+--   name varchar(5) 
+--
+source state.sql;
+
+--
+-- 各テーブルを削除しておく。
+--
+DROP TABLE IF EXISTS person;
+DROP TABLE IF EXISTS course;
+DROP TABLE IF EXISTS gender;
+
+--
+-- コーステーブル
+--
+CREATE TABLE course (
+  id   char(3) PRIMARY KEY,
+  name varchar(50)
+);
+
+INSERT INTO course
+VALUES
+('C01', 'HTML/CSSコース'),
+('C02', 'JavaScriptコース'),
+('C03', 'PHPコース'),
+('C04', 'Javaコース'),
+('C05', 'サーブレットJSPコース');
+
+--
+-- 性別テーブル
+--
+CREATE TABLE gender (
+  id char(1) PRIMARY KEY,
+  name VARCHAR(10)
+);
+
+INSERT INTO gender
+VALUES
+('0', '不明'),
+('1', '男'),
+('2', '女'),
+('3', '他');
+
+--
+-- パーソンテーブル
+--
+CREATE TABLE person (
+  id       INT  PRIMARY KEY AUTO_INCREMENT,
+  name     VARCHAR(20),
+  gen_id   CHAR(1),
+  birthday DATE,
+  st_id    CHAR(2),
+  cs_id    CHAR(3)
+);
+
+--
+-- 外部キー制約
+--
+
+ALTER TABLE person
+ADD
+  CONSTRAINT fk_gen_id
+  FOREIGN KEY (gen_id)
+  REFERENCES gender (id);
+
+ALTER TABLE person
+ADD
+  CONSTRAINT fk_state_id
+  FOREIGN KEY (st_id)
+  REFERENCES state (id);
+
+ALTER TABLE person
+ADD
+  CONSTRAINT fk_cs_id
+  FOREIGN KEY (cs_id)
+  REFERENCES course (id);
+
+
+INSERT INTO person
+  (name, gen_id, birthday, st_id, cs_id)
+VALUES
+  ('染谷将太',   '1', '1992/9/3',  '13', 'C02'),
+  ('二階堂ふみ', '2', '1994/9/21', '47', 'C03'),
+  ('渡辺哲',     '1', '1950/3/11', '23', 'C04'),
+  ('窪塚洋介',   '1', '1979/5/7',  '14', 'C01'),
+  ('吉高由里子', '2', '1988/7/22', '13', 'C04');
+
+/*
+SELECT * FROM course;
+SELECT
+  name,
+  gender,
+  timestampdiff(year, birthday, now()),
+  birthday,
+  state,
+  cs_id 
+FROM person;
+*/
+
+
+SELECT
+  *
+FROM person p
+  JOIN gender g
+  ON p.gen_id = g.id
+    JOIN state s
+    ON p.st_id = s.id
+      JOIN course c
+      ON p.cs_id = c.id
+ORDER BY p.id;
+
+
+-- 修正時刻: Wed 2023/04/05 06:53:21
