@@ -1,4 +1,0 @@
--- mysql -u root -p
-
-grant all on student.* to 'st_user'@'localhost'
-identified by 'stxxx';
